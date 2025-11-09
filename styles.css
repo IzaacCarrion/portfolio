@@ -1,0 +1,542 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Light Theme Colors */
+    --bg-light: #faf9f6;
+    --bg-light-alt: #f5f4f1;
+    --text-dark: #1a1a1a;
+    --text-dark-light: #4a4a4a;
+    
+    /* Dark Theme Colors */
+    --bg-dark: #0f0f0f;
+    --bg-darker: #000000;
+    --text-white: #ffffff;
+    --text-light: #e0e0e0;
+    
+    /* Accent */
+    --accent-orange: #ff6b35;
+    --accent-orange-rgb: 255, 107, 53;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Light Section */
+.light-section {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 100px 0;
+}
+
+/* Dark Section */
+.dark-section {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    padding: 100px 0;
+}
+
+/* Hero Section - Light Background */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start; 
+    background: linear-gradient(135deg,
+                    var(--bg-light) 0%,
+                    var(--bg-light-alt) 45%,
+                    rgba(var(--accent-orange-rgb), 0.08) 100%);
+    background-blend-mode: normal;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-nav {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.hero-nav .nav-link {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    position: relative;
+}
+
+.hero-nav .nav-link:hover {
+    opacity: 0.6;
+}
+
+.hero-content {
+    max-width: 1200px;
+    width: 100%;
+    position: static;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left; 
+    min-height: calc(clamp(3rem, 8vw, 8rem) + clamp(1.5rem, 3vw, 2.5rem) + 1rem);
+}
+
+.hero-name {
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: normal;
+    margin: 0 0 1rem 0; /* larger gap to separate name and role */
+    color: var(--text-dark);
+}
+
+.hero-role {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1.05; /* keeps height stable across characters */
+    display: block;        /* keep role on its own line under the name */
+}
+
+.brackets {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+
+/* Typewriter / Cursor styles for hero role */
+.hero-role .typed {
+    display: inline-block;
+    /* Ensure the typed span always occupies the same height (prevents vertical 'bobbing') */
+    min-height: 1.25em;
+    line-height: 1;
+}
+
+/* Keep a non-breaking-space when typed content is empty so the container doesn't collapse */
+.hero-role .typed:empty::after {
+    content: '\00a0';
+}
+
+/* Container for typed text and cursor between the brackets */
+.role-inner {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: unset;
+    /* Keep a consistent height even when the typed span is empty (only cursor visible) */
+    min-height: 1.25em;
+}
+
+.role-inner .cursor {
+    align-self: center; /* ensure cursor stays vertically centered */
+}
+
+.brackets {
+    display: inline-block;
+    margin: 0 0.4rem;
+    align-self: center; /* keep brackets vertically centered with role */
+    line-height: 1.25em;
+}
+
+.brackets {
+    display: inline-block;
+    margin: 0 0.4rem;
+}
+
+.hero-role .cursor {
+    display: inline-block;
+    width: 2px;               /* a little thicker */
+    height: 0.7em;           /* shorter in height */
+    margin-left: 6px;
+    background: var(--text-dark); /* cursor color should be var(--text-dark) */
+    border-radius: 1px;
+    animation: blink 1s steps(2, start) infinite;
+    transform-origin: center;
+}
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+/* No thinking keyframes — cursor will blink only */
+/* Project Metadata Section - Light Background */
+.project-meta {
+    background-color: var(--bg-light);
+    padding: 40px 0;
+    margin-top: 0;
+}
+
+.meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 800px;
+}
+
+.meta-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.meta-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-dark);
+}
+
+.meta-value {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+/* Projects Carousel Section - Light Background */
+.projects-carousel-section {
+    background-color: var(--bg-light);
+    padding: 100px 0;
+}
+
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+
+.projects-scroll {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 1rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* Hide the visible scrollbar but keep scrolling functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+
+/* Hide webkit scrollbars while preserving scrolling */
+.projects-scroll::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-info {
+    flex: 1;
+}
+
+.project-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.project-desc {
+    font-size: 1.1rem;
+    color: var(--text-dark-light);
+    line-height: 1.6;
+}
+
+.project-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.project-tech {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.project-tech span {
+    font-size: 0.9rem;
+    color: var(--text-dark-light);
+    padding: 0.3rem 0.8rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.project-link:hover {
+    opacity: 0.6;
+}
+
+/* About Section - Light Background */
+.about-section {
+    background-color: var(--bg-light);
+}
+
+.about-content {
+    max-width: 800px;
+}
+
+.about-text {
+    margin-top: 2rem;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+/* Skills Section - Dark Background */
+.skills-section {
+    background-color: var(--bg-dark);
+}
+
+.skills-section .section-title {
+    color: var(--text-white);
+    margin-bottom: 3rem;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.skill-group {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.skill-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-white);
+    min-width: 120px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    flex: 1;
+}
+
+.skill-items span {
+    font-size: 1rem;
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Contact Section - Light Background */
+
+.contact-section {
+    background-color: var(--bg-light);
+    padding: 60px 0;
+}
+
+.contact-section .section-title {
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+
+.contact-grid {
+    display: block;
+    margin-bottom: 2.5rem;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    transition: transform 360ms cubic-bezier(.2,.9,.2,1),
+                box-shadow 360ms cubic-bezier(.2,.9,.2,1),
+                opacity 360ms ease;
+    will-change: transform, box-shadow, opacity;
+}
+
+.contact-intro {
+    margin-bottom: 1rem;
+    color: var(--text-dark-light);
+}
+
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-link {
+    display: inline-flex;
+    gap: 0.8rem;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 700;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1),
+                background-color 220ms ease,
+                color 220ms ease,
+                box-shadow 220ms cubic-bezier(.2,.9,.2,1);
+}
+
+.contact-link svg { opacity: 0.95; }
+
+.contact-link.contact-cta { display: inline-flex; }
+.contact-link.contact-cta:hover { color: white; background: var(--accent-orange); border-color: var(--accent-orange); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.10); }
+.contact-link.contact-cta.subtle { background: transparent; border: none; padding-left: 0; }
+
+/* subtle hover for non-CTA links */
+.contact-link:hover:not(.contact-cta) { transform: translateX(6px); color: var(--accent-orange); }
+
+.contact-subtitle { margin: 0 0 0.5rem 0; font-size: 1rem; font-weight:700 }
+
+.footer-bottom { margin-top: 1.5rem; }
+
+/* Accessibility helper */
+.sr-only { position: absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+@media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-card { padding: 1rem; }
+}
+
+.footer-bottom {
+    padding-top: 3rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-dark-light);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .hero {
+        padding: 0 20px;
+    }
+
+    .meta-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .project-item {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .project-right {
+        align-items: flex-start;
+    }
+
+    .project-tech {
+        justify-content: flex-start;
+    }
+
+    .skill-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-name {
+        font-size: 3rem;
+    }
+
+    .hero-role {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+    }
+}
